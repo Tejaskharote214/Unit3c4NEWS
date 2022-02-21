@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!--DO NOT CHANGE THIS ID's-->
+
+    <div id="container">
+      <div id="sidebar">
+        <!--add your sidebar component here-->
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Show the clicked article in detailed format here ONLY-->
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+
+
+  let clicked_image = JSON.parse(localStorage.getItem("article"));
+
+
+  showData(clicked_image);
+
+  function showData(clicked_image){
+
+    clicked_image.forEach(elem =>{
+
+      let div = document.createElement("div");
+        div.setAttribute("id","content");
+
+        let div1 = document.createElement("div");
+        div1.setAttribute("id","index-div");
+
+
+        let img = document.createElement("img");
+        img.src = elem.urlToImage;
+        img.setAttribute("id","img");
+
+
+        div1.append(img);
+
+        let title = document.createElement("p");
+        title.innerHTML = elem.title;
+
+        let des  = document.createElement("p");
+        des.innerText = elem.description;
+
+        let div2 = document.createElement("div");
+        div2.append(title,des);
+        div.append(div1,div2);
+
+      document.getElementById("main").append(div);
+
+    });
+  }
+
+
+</script>
